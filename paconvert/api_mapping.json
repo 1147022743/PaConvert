@@ -1209,6 +1209,7 @@
   "torch.Tensor.dsplit": {
     "Matcher": "GenericMatcher",
     "paddle_api": "paddle.Tensor.dsplit",
+    "min_input_args": 1,
     "args_list": [
       "indices",
       "sections"
