@@ -53,3 +53,27 @@ def test_case_3():
         """
     )
     obj.run(pytorch_code, ["result"])
+
+
+def test_case_4():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        input = torch.zeros(2, 2)
+        src = torch.ones(2)
+        result = input.select_scatter(src=src, dim=1, index=1)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
+
+
+def test_case_5():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        input = torch.zeros(2, 2)
+        src = torch.ones(2)
+        result = input.select_scatter(index=1, src=src, dim=1)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
