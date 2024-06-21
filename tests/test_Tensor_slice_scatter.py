@@ -41,3 +41,39 @@ def test_case_2():
         """
     )
     obj.run(pytorch_code, ["result"])
+
+
+def test_case_3():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        a = torch.zeros(8, 8)
+        b = torch.ones(8, 2)
+        result = a.slice_scatter(src=b, dim=1, start=2, end=6, step=2)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
+
+
+def test_case_4():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        a = torch.zeros(8, 8)
+        b = torch.ones(8, 2)
+        result = a.slice_scatter(dim=1, src=b, step=2, start=2, end=6)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
+
+
+def test_case_5():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        a = torch.zeros(8, 8)
+        b = torch.ones(8, 2)
+        result = a.slice_scatter(b, 1, 2, 6, 2)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
