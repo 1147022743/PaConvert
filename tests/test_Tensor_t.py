@@ -16,15 +16,15 @@ import textwrap
 
 from apibase import APIBase
 
-obj = APIBase("torch.Tensor.T")
+obj = APIBase("torch.Tensor.t")
 
 
 def test_case_1():
     pytorch_code = textwrap.dedent(
         """
         import torch
-        x = torch.arange(16).reshape(4, 4)
-        result = x.T
+        a = torch.Tensor([[1.,2.], [3.,4.]])
+        result = a.t()
         """
     )
     obj.run(pytorch_code, ["result"])
@@ -34,7 +34,18 @@ def test_case_2():
     pytorch_code = textwrap.dedent(
         """
         import torch
-        result = torch.arange(16).reshape(4, 4).T
+        x = torch.arange(16).reshape(4, 4)
+        result = x.t
+        """
+    )
+    obj.run(pytorch_code, ["result"])
+
+
+def test_case_3():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        result = torch.arange(16).reshape(4, 4).t
         """
     )
     obj.run(pytorch_code, ["result"])
