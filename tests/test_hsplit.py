@@ -51,3 +51,15 @@ def test_case_3():
         """
     )
     obj.run(pytorch_code, ["result"])
+
+
+def test_case_4():
+    pytorch_code = textwrap.dedent(
+        """
+        import torch
+        t = torch.arange(16.0).reshape(4, 4)
+        result = torch.hsplit(t,sections=2)
+        """
+    )
+    obj.run(pytorch_code, ["result"])
+
